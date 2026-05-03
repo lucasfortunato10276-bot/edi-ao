@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Mapa da Edição Elite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card: #0d0d0d;
+            --primary: #00ff88;
+            --text: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* Barra de Progresso */
+        .progress-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            background: #111;
+            z-index: 9999;
+        }
+        #progress-bar { height: 100%; width: 33.3%; background: var(--primary); transition: 0.6s ease; box-shadow: 0 0 15px var(--primary); }
+
+        /* Seções */
+        section {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 20px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        section.active { display: flex; }
+
+        /* Animação de Entrada dos Cards */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        /* Página 1: Hero */
+        .hero-box { text-align: center; max-width: 800px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; margin-bottom: 20px; line-height: 1.1; }
+        h1 span { color: var(--primary); }
+        .sub { color: var(--text-dim); font-size: 1.2rem; margin-bottom: 40px; }
+
+        /* Página 2: Os 5 Passos */
+        .steps-wrapper { max-width: 850px; width: 100%; }
+        .step-card {
+            background: var(--card);
+            border: 1px solid #1a1a1a;
+            padding: 45px;
+            border-radius: 30px;
+            margin-bottom: 40px;
+        }
+        .step-card h2 { color: var(--primary); margin-bottom: 15px; font-size: 1.8rem; }
+        .step-card p { line-height: 1.8; color: var(--text-dim); margin-bottom: 20px; }
+        .step-card ul { list-style: none; }
+        .step-card li { margin-bottom: 10px; color: #eee; display: flex; gap: 10px; }
+        .step-card li::before { content: "✔"; color: var(--primary); font-weight: bold; }
+
+        /* Página 3: Conversão */
+        .offer-wrapper {
+            max-width: 650px;
+            text-align: center;
+            background: linear-gradient(145deg, #0d0d0d, #050505);
+            padding: 60px 30px;
+            border-radius: 40px;
+            border: 1px solid #222;
+        }
+        .offer-wrapper h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .quality-grid { text-align: left; margin: 40px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .quality-item { font-size: 0.9rem; color: #ccc; }
+        .quality-item b { color: var(--primary); display: block; margin-bottom: 5px; }
+
+        /* Botões */
+        .btn {
+            background: var(--primary);
+            color: #000;
+            padding: 22px 45px;
+            border-radius: 15px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4); }
+
+        @media (max-width: 700px) {
+            .quality-grid { grid-template-columns: 1fr; }
+            .step-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-nav"><div id="progress-bar"></div></div>
+
+    <!-- PÁGINA 1 -->
+    <section id="page1" class="active">
+        <div class="hero-box">
+            <h1>O Mapa da <span>Edição Elite</span></h1>
+            <p class="sub">Descubra a lógica por trás dos vídeos que dominam as redes e como transformar essa habilidade na sua maior fonte de renda e liberdade em 2026.</p>
+            <button class="btn" onclick="goTo(2)">QUERO VER OS 5 PASSOS →</button>
+        </div>
+    </section>
+
+    <!-- PÁGINA 2 -->
+    <section id="page2">
+        <div class="steps-wrapper">
+            
+            <div class="step-card reveal" style="animation-delay: 0.1s;">
+                <h2>01. O Corte Invisível</h2>
+                <p>O ritmo é a alma do vídeo profissional. Na era da atenção curta, cada segundo de silêncio é um risco de perder o espectador.</p>
+                <ul>
+                    <li>Elimine respiros e hesitações entre as frases.</li>
+                    <li>Mantenha a fala dinâmica, como uma conversa sem interrupções.</li>
+                </ul>
+            </div>
+
+            <div class="step-card reveal" style="animation-delay: 0.3s;">
+                <h2>02. Psicologia Sonora</h2>
+                <p>O áudio conduz o sentimento. Sem o design de som correto, sua mensagem perde 70% do impacto emocional.</p>
+                <ul>
+                    <li>Use efeitos de transição (SFX) para pontuar mudanças de assunto.</li>
+                    <li>Mantenha a trilha sonora em harmonia com o tom da voz.</li>
+                </ul>
+            </div>
+
+            <div class="step-card reveal" style="animation-delay: 0.5s;">
+                <h2>03. Retenção Visual</h2>
+                <p>A maioria das pessoas assiste sem som. Legendas dinâmicas não são opcionais, são obrigatórias para o sucesso.</p>
+                <ul>
+                    <li>Destaque palavras-chave para manter o foco visual.</li>
+                    <li>Use legendas que acompanham o ritmo e a ênfase da fala.</li>
+                </ul>
+            </div>
+
+            <div class="step-card reveal" style="animation-delay: 0.7s;">
+                <h2>04. Quebra de Padrão</h2>
+                <p>O cérebro ignora o que é estático. Você precisa "acordar" o espectador a cada poucos segundos.</p>
+                <ul>
+                    <li>Intercale o vídeo principal com cenas de apoio (B-Roll).</li>
+                    <li>Use zooms e enquadramentos diferentes para criar dinamismo.</li>
+                </ul>
+            </div>
+
+            <div class="step-card reveal" style="animation-delay: 0.9s;">
+                <h2>05. Finalização Premium</h2>
+                <p>A estética visual define quanto você pode cobrar. O look profissional vem do tratamento de cor estratégico.</p>
+                <ul>
+                    <li>Corrija cores para passar uma sensação de cinema e autoridade.</li>
+                    <li>Garanta a máxima nitidez na exportação para todas as plataformas.</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn" onclick="goTo(3)">REVELAR O PRÓXIMO PASSO →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA 3 -->
+    <section id="page3">
+        <div class="offer-wrapper reveal">
+            <h2>Sua nova realidade começa aqui.</h2>
+            <p class="sub">O mapa você já conhece. Agora, você tem a oportunidade de dominar o método completo que vai te tirar do zero e te colocar no topo do mercado.</p>
+
+            <div class="quality-grid">
+                <div class="quality-item">
+                    <b>MÉTODO COMPROVADO</b>
+                    Aprenda exatamente o que o mercado de alto nível exige em 2026.
+                </div>
+                <div class="quality-item">
+                    <b>SEGURANÇA E SUPORTE</b>
+                    Acesso imediato em ambiente blindado com acompanhamento real.
+                </div>
+                <div class="quality-item">
+                    <b>LIBERDADE FINANCEIRA</b>
+                    Transforme sua criatividade em uma carreira lucrativa e sem fronteiras.
+                </div>
+                <div class="quality-item">
+                    <b>RESULTADO IMEDIATO</b>
+                    Um passo a passo desenhado para você aplicar e ver a mudança hoje.
+                </div>
+            </div>
+
+            <p style="margin-bottom: 30px; font-style: italic; color: var(--primary);">Imagine ter o controle do seu tempo e viver exclusivamente do que você ama criar.</p>
+
+            <a href="https://edit-master02.vercel.app/"><button class="btn" style="width: 100%;" ">ACESSAR CURSO COMPLETO</button></a>
+            
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #444;">🛡️ Sua mudança de vida protegida por garantia de satisfação.</p>
+        </div>
+    </section>
+
+    <script>
+        function goTo(pageNumber) {
+            // Esconde todas as seções
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            
+            // Mostra a página alvo
+            const activePage = document.getElementById('page' + pageNumber);
+            activePage.classList.add('active');
+
+            // Atualiza barra de progresso
+            const bar = document.getElementById('progress-bar');
+            bar.style.width = (pageNumber / 3 * 100) + '%';
+
+            // Garante que o usuário veja o topo da nova página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
